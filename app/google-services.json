@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "792890548742",
+    "project_id": "saidiatoto-a66e4",
+    "storage_bucket": "saidiatoto-a66e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792890548742:android:927494cc41d70cade55987",
+        "android_client_info": {
+          "package_name": "com.laura.saidiatoto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792890548742-b9vrr7ucomfe8ulat2nsq6rd4hjq9ehh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC44qTiJ5xgsAfofd6CfwP5bAJ7Ea6ztKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792890548742-b9vrr7ucomfe8ulat2nsq6rd4hjq9ehh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

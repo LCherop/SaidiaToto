@@ -1,0 +1,2 @@
+rootProject.name = "SaidiaToto"
+include ':app'

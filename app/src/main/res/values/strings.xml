@@ -9,4 +9,9 @@
     <string name="register">Register</string>
     <string name="already_have_an_account_log_in">Already have an account? Log In</string>
     <string name="toRegister">Register</string>
+    <string name="login_title">Login</string>
+    <string name="sign_up">Sign up</string>
+    <string name="username">Username</string>
+    <string name="login">Login</string>
+    <string name="forget_password">forget password?</string>
 </resources>

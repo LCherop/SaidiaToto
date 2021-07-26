@@ -1,17 +1,26 @@
 package com.laura.saidiatoto;
 
 public class UserHelper {
-    String fname,email,number,password;
+    String fname,email,number,password,username;
 
     public UserHelper() {
 
     }
 
-    public UserHelper(String fname, String email, String number, String password) {
+    public UserHelper(String fname,String username, String email, String number, String password) {
         this.fname = fname;
+        this.username = username;
         this.email = email;
         this.number = number;
         this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFname() {

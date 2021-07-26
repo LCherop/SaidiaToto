@@ -2,8 +2,11 @@ package com.laura.saidiatoto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -12,7 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUp extends AppCompatActivity {
-    TextInputLayout fName,Email,pno,passw,cpassw;
+    TextInputLayout fName,Email,pno,passw,Uname;
     Button register,toLogin;
 
     FirebaseDatabase rootNode;
@@ -21,13 +24,14 @@ public class SignUp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_sign_up);
 
         fName = findViewById(R.id.fName);
+        Uname = findViewById(R.id.uName);
         Email = findViewById(R.id.email);
         pno = findViewById(R.id.pno);
         passw = findViewById(R.id.passw);
-        cpassw = findViewById(R.id.cpassw);
         register = findViewById(R.id.reg);
         toLogin =findViewById(R.id.toLogin);
 
@@ -36,35 +40,49 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-              /*  private void validate()
-            {
-                    boolean temp=true;
-                    String checkemail = Email.getEditText().getText().toString();
-                    String pass=passw.getEditText().getText().toString();
-                    String cpass=cpassw.getEditText().getText().toString();
-                    if(!EMAIL_ADDRESS_PATTERN.matcher(checkemail).matches()){
-                        Toast.makeText(SignUp.this,"Invalid Email Address",Toast.LENGTH_SHORT).show();
-                        temp=false;
-                    }
-                    else if(!pass.equals(cpass)){
-                        Toast.makeText(SignUp.this,"Password Not matching",Toast.LENGTH_SHORT).show();
-                        temp=false;
-                    }
-
-            }*/
-
-                rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("users");
-
-
                 String name = fName.getEditText().getText().toString();
+                String username = Uname.getEditText().getText().toString();
                 String email = Email.getEditText().getText().toString();
                 String number = pno.getEditText().getText().toString();
                 String pass = passw.getEditText().getText().toString();
 
-                UserHelper helper = new UserHelper(name,email,number,pass);
+                //Text Validation
+                    if(name.length()==0){
+                        fName.setError("Field must not be empty");
+                    }
+                    if(username.length()==0){
+                    Uname.setError("Field must not be empty");
+                }
+                    if(email.length()==0){
+                        Email.setError("Field must not be empty");
+                    }
+                    if (number.length()==0){
+                        pno.setError("Field must not be empty");
+                    }
+                    if (pass.length()==0){
+                        passw.setError("Field must not be empty");
+                    }
+                    if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                        Email.setError("Invalid Email Address");
+                    }
+                    if (!Patterns.PHONE.matcher(number).matches()){
+                        pno.setError("Invalid phone number");
+                    }else{
+                    rootNode = FirebaseDatabase.getInstance();
+                    reference = rootNode.getReference("users");
 
-                reference.child(number).setValue(helper);
+
+                    UserHelper helper = new UserHelper(name,username,email,number,pass);
+
+                    reference.child(username).setValue(helper);
+
+                    Intent toLanding = new Intent( SignUp.this, Landing_Page.class);
+                    startActivity(toLanding);
+
+                    Toast.makeText(SignUp.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                }
+
+
 
 
             }
@@ -72,4 +90,8 @@ public class SignUp extends AppCompatActivity {
     }
 
 
+    public void toLogin(View view) {
+        Intent tologin = new Intent(this, Login.class);
+        startActivity(tologin);
+    }
 }

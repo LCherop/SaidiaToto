@@ -9,9 +9,16 @@
     <string name="register">Register</string>
     <string name="already_have_an_account_log_in">Already have an account? Log In</string>
     <string name="toRegister">Register</string>
-    <string name="login_title">Login</string>
-    <string name="sign_up">Sign up</string>
-    <string name="username">Username</string>
+    <string name="forget_password">Forgot Password</string>
     <string name="login">Login</string>
-    <string name="forget_password">forget password?</string>
+    <string name="sign_up">New User ? Sign Up</string>
+    <string name="username">Email</string>
+    <string name="login_title">Login</string>
+    <string name="full_nameP">Full Name</string>
+    <string name="email_profile">Email</string>
+    <string name="phone_number_profile">Phone Number</string>
+    <string name="password_profile">Password</string>
+    <string name="verification_code">Verfication Code</string>
+    <string name="description">A message has been sent to</string>
+    <string name="uname">Username</string>
 </resources>

@@ -28,14 +28,14 @@
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/uname"
+            android:hint="@string/email"
             style="@style/LoginTextInputLayoutStyle"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/black"
                 />
 

@@ -5,12 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,13 +26,29 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+//import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
+
+import static java.lang.String.*;
 
 public class Login extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     TextInputLayout email, pass;
     Button login;
+    private static final String TAG = "EmailPassword";
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            reload();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,26 +58,36 @@ public class Login extends AppCompatActivity {
 
         email = findViewById(R.id.username);
         pass = findViewById(R.id.password);
+        mAuth = FirebaseAuth.getInstance();
 
-        Button login = (Button) findViewById(R.id.login);
+        login = findViewById(R.id.login);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String em = email.getEditText().getText().toString();
-                String pas = pass.getEditText().getText().toString();
-                    if(em.length()==0){
-                        email.setError("Field must not be empty");
-                    }
-                    if(pas.length()==0){
-                        pass.setError("Field must not be empty");
-                    }else{
-                        checkUser();
-                    }
+                String em = valueOf(email.getEditText().getText());
+                String pas = valueOf(pass.getEditText().getText());
 
+                mAuth.signInWithEmailAndPassword(em, pas).addOnCompleteListener(Login.this, task -> {
+                    if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithEmail:success");
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        Intent toProfile = new Intent(Login.this,Profile.class);
+                        startActivity(toProfile);
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "signInWithEmail:failure", task.getException());
+                        Toast.makeText(Login.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
+                        updateUI(null);
+                    }
+                }).addOnFailureListener(e -> Toast.makeText(Login.this, e.getLocalizedMessage(),Toast.LENGTH_LONG).show());
 
             }
         });
+
+
     }
 
 
@@ -70,54 +104,31 @@ public class Login extends AppCompatActivity {
 
 
     private void checkUser() {
-        String EnteredEmail = email.getEditText().getText().toString();
-        String EnteredPass = Objects.requireNonNull(pass.getEditText()).getText().toString();
+        String em = Objects.requireNonNull(email.getEditText()).getText().toString();
+        String pas = Objects.requireNonNull(pass.getEditText()).getText().toString();
+        mAuth.signInWithEmailAndPassword(em, pas).addOnCompleteListener(Login.this, task -> {
+            if (task.isSuccessful()) {
+                // Sign in success, update UI with the signed-in user's information
+                Log.d(TAG, "signInWithEmail:success");
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-        Query check = reference.orderByChild("username").equalTo(EnteredEmail);
-        check.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-
-                    email.setError(null);
-                    email.setErrorEnabled(false);
-
-                    String passwordinDB = snapshot.child(EnteredEmail).child("password").getValue(String.class);
-
-                    if (passwordinDB.equals(EnteredPass)){
-                        pass.setError(null);
-                        pass.setErrorEnabled(false);
-
-                        String nameinDB = snapshot.child(EnteredEmail).child("fname").getValue(String.class);
-                        String numberinDB = snapshot.child(EnteredEmail).child("number").getValue(String.class);
-                        String emailinDB = snapshot.child(EnteredEmail).child("email").getValue(String.class);
-                        String usernameinDB = snapshot.child(EnteredEmail).child("username").getValue(String.class);
-
-                        Intent toProfile = new Intent(getApplicationContext(),Profile.class);
-
-                        toProfile.putExtra("name",nameinDB);
-                        toProfile.putExtra("number",numberinDB);
-                        toProfile.putExtra("username",usernameinDB);
-                        toProfile.putExtra("email",emailinDB);
-                        toProfile.putExtra("passw",passwordinDB);
-
-                        startActivity(toProfile);
-                    }else {
-                        pass.setError("Incorrect Password");
-                        pass.requestFocus();
-                    }
-                }else {
-                    email.setError("No such user exists");
-                    email.requestFocus();
-                }
-
+                FirebaseUser user = mAuth.getCurrentUser();
+                Intent toLanding = new Intent(Login.this,Landing_Page.class);
+                startActivity(toLanding);
+            } else {
+                // If sign in fails, display a message to the user.
+                Log.w(TAG, "signInWithEmail:failure", task.getException());
+                Toast.makeText(Login.this, "Authentication failed.",
+                        Toast.LENGTH_SHORT).show();
+                updateUI(null);
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+        }).addOnFailureListener(e -> Toast.makeText(Login.this, e.getLocalizedMessage(),Toast.LENGTH_LONG).show());
 
     }
+    private void reload() { }
+
+    private void updateUI(FirebaseUser user) {
+
+    }
+
+
 }

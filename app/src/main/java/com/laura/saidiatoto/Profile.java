@@ -1,51 +1,88 @@
 package com.laura.saidiatoto;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class Profile extends AppCompatActivity {
-    TextInputLayout fullName,email,phoneNo,password;
-    TextView fullNameLabel;
+    private TextInputLayout email;
+    private static final String TAG = "EmailPassword";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        fullName = findViewById(R.id.fname_Profile);
-        fullNameLabel = findViewById(R.id.fullNameLabel);
+
         email = findViewById(R.id.email_Profile);
-        phoneNo = findViewById(R.id.pNo_Profile);
-        password = findViewById(R.id.passw_Profile);
+
 
         //Show user data
         showData();
     }
 
     private void showData() {
-        Intent toProfile = getIntent();
-        String user_name = toProfile.getStringExtra("name");
-        String user_email = toProfile.getStringExtra("email");
-        String user_number = toProfile.getStringExtra("number");
-        String user_password = toProfile.getStringExtra("passw");
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // User is signed in
+            String Temail = user.getEmail();
 
-        fullNameLabel.setText(user_name);
 
-        fullName.getEditText().setText(user_name);
-        email.getEditText().setText(user_email);
-        phoneNo.getEditText().setText(user_number);
-        password.getEditText().setText(user_password);
+            boolean emailVerified = user.isEmailVerified();
+            String uid = user.getUid();
+
+            email.getEditText().setText(Temail);
+
+        } else {
+            // No user is signed in
+            Toast.makeText(Profile.this,"Please sign in to view details",Toast.LENGTH_SHORT).show();
+        }
+
+
 
 
     }
 
     public void updateUser(View view) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setDisplayName("Jane Q. User")
+                .setPhotoUri(Uri.parse("https://example.com/jane-q-user/profile.jpg"))
+                .build();
+
+        user.updateProfile(profileUpdates)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "User profile updated.");
+                        }
+                    }
+                });
+        user.updateEmail("user@example.com")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "User email address updated.");
+                        }
+                    }
+                });
 
     }
 }

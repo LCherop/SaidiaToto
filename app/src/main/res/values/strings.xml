@@ -18,12 +18,7 @@
     <string name="email_profile">Email</string>
     <string name="phone_number_profile">Phone Number</string>
     <string name="password_profile">Password</string>
-    <string name="verification_code">Verification Code</string>
+    <string name="verification_code">Verfication Code</string>
     <string name="description">A message has been sent to</string>
     <string name="uname">Username</string>
-    <string name="verify_button">VERIFY</string>
-    <string name="forgot_password">Forgot Password?</string>
-    <string name="email_link_textview">Please enter email address and check for an email password reset link</string>
-    <string name="send">Send</string>
-    <string name="email_address">Email Address</string>
 </resources>

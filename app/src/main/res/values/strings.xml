@@ -21,4 +21,15 @@
     <string name="verification_code">Verfication Code</string>
     <string name="description">A message has been sent to</string>
     <string name="uname">Username</string>
+    <string name="email_link_textview">Email</string>
+    <string name="email_address">Email address</string>
+    <string name="send">Send</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="hospitals">Hospitals</string>
+    <string name="hospital_name">Hospital Name</string>
+    <string name="app_information_coming_soon">App Information coming soon</string>
+    <string name="profile">Profile</string>
+    <string name="info">Info</string>
+    <string name="emergency">Emergency</string>
+    <string name="settings">Settings</string>
 </resources>

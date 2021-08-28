@@ -67,7 +67,7 @@
             tools:layout_editor_absoluteY="565dp"
             android:textColor="@color/cherry"
             android:onClick="recoverPassword"
-            android:layout_gravity="right"
+            android:layout_gravity="end"
             android:background="#00000000"/>
 
         <Button

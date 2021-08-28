@@ -52,6 +52,7 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth=FirebaseAuth.getInstance();
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
@@ -92,13 +93,15 @@ public class Login extends AppCompatActivity {
 
 
 
-
     public void toreg(View view) {
         Intent toregP = new Intent(this,SignUp.class);
         startActivity(toregP);
     }
 
     public void recoverPassword(View view) {
+    Intent recover=new Intent(this,Forgot_Password.class);
+    startActivity(recover);
+
     }
 
 

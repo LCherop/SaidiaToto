@@ -68,7 +68,7 @@
             android:hint="@string/email"
 
             style="@style/LoginTextInputLayoutStyle">
-            >
+
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/phone_number"
             style="@style/LoginTextInputLayoutStyle">
-            >
+
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -134,7 +134,9 @@
         android:id="@+id/toLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/cherry"
+        android:background="none"
+        android:textAllCaps="false"
+        android:textColor="@color/cherry"
         android:text="@string/already_have_an_account_log_in"
         android:onClick="toLogin"/>
 

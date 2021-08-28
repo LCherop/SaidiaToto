@@ -88,7 +88,11 @@ public class SignUp extends AppCompatActivity {
                     if (!Patterns.PHONE.matcher(number).matches()){
                         pno.setError("Invalid phone number");
                     }else{
-                        mAuth.createUserWithEmailAndPassword(email, String.valueOf(passw)).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
+                        /*rootNode = FirebaseDatabase.getInstance();
+                        reference = rootNode.getReference("users");
+                        UserHelper helper = new UserHelper(name,username,email,number,pass);
+                        reference.child(email).setValue(helper);*/
+                        mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
@@ -107,13 +111,6 @@ public class SignUp extends AppCompatActivity {
                                         }
                                     }
                                 });
-                    //rootNode = FirebaseDatabase.getInstance();
-                    //reference = rootNode.getReference("users");
-
-
-                    UserHelper helper = new UserHelper(name,username,email,number,pass);
-
-                    //reference.child(username).setValue(helper);
 
 
 

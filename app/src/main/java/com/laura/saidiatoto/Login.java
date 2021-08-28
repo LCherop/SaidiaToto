@@ -28,6 +28,8 @@ import com.google.firebase.database.ValueEventListener;
 
 //import org.jetbrains.annotations.NotNull;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 import static java.lang.String.*;
@@ -35,8 +37,10 @@ import static java.lang.String.*;
 public class Login extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    TextInputLayout email, pass;
-    Button login;
+    private DatabaseReference ref;
+
+    private TextInputLayout email, pass;
+    private Button login;
     private static final String TAG = "EmailPassword";
 
 
@@ -52,7 +56,6 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mAuth=FirebaseAuth.getInstance();
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
@@ -66,15 +69,16 @@ public class Login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String em = valueOf(email.getEditText().getText());
-                String pas = valueOf(pass.getEditText().getText());
+                String em = email.getEditText().getText().toString();
+                String pas = pass.getEditText().getText().toString();
+
 
                 mAuth.signInWithEmailAndPassword(em, pas).addOnCompleteListener(Login.this, task -> {
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithEmail:success");
                         FirebaseUser user = mAuth.getCurrentUser();
-                        Intent toProfile = new Intent(Login.this,Profile.class);
+                        Intent toProfile = new Intent(Login.this, Profile.class);
                         startActivity(toProfile);
                     } else {
                         // If sign in fails, display a message to the user.
@@ -83,13 +87,16 @@ public class Login extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                         updateUI(null);
                     }
-                }).addOnFailureListener(e -> Toast.makeText(Login.this, e.getLocalizedMessage(),Toast.LENGTH_LONG).show());
+                }).addOnFailureListener(e -> Toast.makeText(Login.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show());
 
             }
-        });
+
+
+            });
 
 
     }
+
 
 
 

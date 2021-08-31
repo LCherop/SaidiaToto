@@ -68,7 +68,7 @@
             android:textColor="@color/cherry"
             android:onClick="recoverPassword"
             android:layout_gravity="end"
-            android:background="#00000000"/>
+            style="@style/Widget.AppCompat.Button.Borderless"/>
 
         <Button
             android:id="@+id/login"
@@ -89,10 +89,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/cherry"
         android:onClick="toreg"
         android:text="@string/sign_up"
-        android:textColor="@color/chiffon"
+        android:textAllCaps="false"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="@color/cherry"
         tools:layout_editor_absoluteX="128dp"
         tools:layout_editor_absoluteY="565dp" />
 

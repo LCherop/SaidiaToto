@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/logo_cherry_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SaidiaToto">
-        <activity android:name=".Profile"></activity>
+        <activity android:name=".app_info_page"/>
+        <activity android:name=".Profile" />
         <activity android:name=".OTP_number" />
         <activity android:name=".Login" />
         <activity android:name=".Landing_Page" />

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FeverActivity">
+    <include layout="@layout/toolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/finst_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:layout_below="@+id/toolbar"
+                android:textSize="30sp"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/finst_cctitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Common Causes"
+                android:layout_below="@+id/finst_title"
+                android:textSize="20sp"
+
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/furncommonCauses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_below="@+id/finst_cctitle"
+                android:textColor="@color/black"
+                android:text="Common causes"
+                android:paddingBottom="10dp"
+                />
+            <TextView
+                android:id="@+id/finst_smtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Signs and Symptoms"
+                android:layout_below="@+id/furncommonCauses"
+                android:textSize="20sp"
+
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/furnsandm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/finst_smtitle"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:text="Signs and Symptoms"
+                android:paddingBottom="10dp"
+                />
+            <TextView
+                android:id="@+id/finst_stitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Common Causes"
+                android:layout_below="@+id/furnsandm"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/furnsteps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/finst_stitle"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:text="Steps to follow:"
+                android:paddingBottom="10dp"
+                />
+            <TextView
+                android:id="@+id/finst_mititle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="More Information"
+                android:layout_below="@+id/furninstructionImage"
+                android:textSize="20sp"
+
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/fmoreInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/finst_mititle"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:text="MoreInfo"
+                android:paddingBottom="10dp"
+                />
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Language"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:id="@+id/lang"
+            android:layout_margin="10dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Account Settings"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:id="@+id/acc_set"
+            android:layout_margin="5dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Log Out"
+            android:id="@+id/logout"
+            android:textColor="@color/cherry"
+            android:textSize="20sp"
+            android:layout_margin="5dp"
+            />
+    </LinearLayout>
+
+</LinearLayout>

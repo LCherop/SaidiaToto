@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
@@ -11,6 +12,7 @@ import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -23,6 +25,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,8 +38,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class NearbyHospitals extends AppCompatActivity implements OnMapReadyCallback, LocationListener, GoogleMap.OnMarkerClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
 
-    public static final int ROUND = 10;
+    public static final int ROUND = 7;
     private GoogleMap mMap;
+    private BottomNavigationView bottomNavigationView;
     public GoogleApiClient googleApiClient;
     private ChildEventListener mChildEventListener;
     private DatabaseReference mHospitals;
@@ -46,12 +51,68 @@ public class NearbyHospitals extends AppCompatActivity implements OnMapReadyCall
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nearby_hospitals);
 
+        bottomNavigationView = findViewById(R.id.botomNav);
+        bottomNavigationView.setSelectedItemId(R.id.settings);
+        bottome();
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         ChildEventListener mChildEventListener;
         mHospitals= FirebaseDatabase.getInstance().getReference("hospitals");
         mHospitals.push().setValue(marker);
+    }
+
+    private void bottome() {
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+
+                switch (item.getItemId()){
+                    case R.id.profile:
+                        startActivity(new Intent(getApplicationContext(),Profile.class));
+                        return true;
+                    case R.id.emergency:
+                        Intent emergency = new Intent(getApplicationContext(),TitleViewer.class);
+                        startActivity(emergency);
+
+                        break;
+                    case R.id.settings:
+                        startActivity(new Intent(getApplicationContext(),activity_settings_page.class));
+                        return true;
+                    case R.id.hospitals:
+                        startActivity(new Intent(getApplicationContext(),NearbyHospitals.class));
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        bottomNavigationView.setOnItemReselectedListener(new NavigationBarView.OnItemReselectedListener() {
+            @Override
+            public void onNavigationItemReselected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.profile:
+                        Intent profile = new Intent(getApplicationContext(),Profile.class);
+                        startActivity(profile);
+                        break;
+                    case R.id.emergency:
+                        //Intent emergency = new Intent(Profile.this,Emergency_Page.class);
+                        //startActivity(emergency);
+
+                        break;
+                    case R.id.settings:
+                        Intent settings = new Intent(getApplicationContext(),activity_settings_page.class);
+                        startActivity(settings);
+                        break;
+                    case R.id.hospitals:
+                        Intent hospitals = new Intent(getApplicationContext(),NearbyHospitals.class);
+                        startActivity(hospitals);
+                        break;
+                }
+            }
+        });
     }
 
     @Override

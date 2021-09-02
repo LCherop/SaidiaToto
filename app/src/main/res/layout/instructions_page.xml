@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/inst_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/commonCauses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inst_title"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:text="Common causes"
+        android:paddingBottom="10dp"
+        />
+    <TextView
+        android:id="@+id/sandm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/commonCauses"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:text="Signs and Symptoms"
+        android:paddingBottom="10dp"
+        />
+    <TextView
+        android:id="@+id/steps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sandm"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:text="Steps to follow:"
+        android:paddingBottom="10dp"
+        />
+    <TextView
+        android:id="@+id/moreInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/steps"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:text="MoreInfo"
+        android:paddingBottom="10dp"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/instructionImage"
+        android:layout_below="@id/moreInfo"
+        />
+
+</RelativeLayout>

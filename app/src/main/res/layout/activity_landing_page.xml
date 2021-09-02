@@ -8,6 +8,24 @@
     android:orientation="vertical"
     android:id="@+id/fragment_container">
 
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/call_999"
+        android:id="@+id/call999"
+        android:onClick="call999"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/call999"
+        android:id="@+id/recyclerInstructionList">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/botomNav"
         android:layout_width="match_parent"

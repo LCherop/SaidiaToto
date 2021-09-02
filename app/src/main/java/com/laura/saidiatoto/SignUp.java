@@ -88,17 +88,20 @@ public class SignUp extends AppCompatActivity {
                     if (!Patterns.PHONE.matcher(number).matches()){
                         pno.setError("Invalid phone number");
                     }else{
-                        /*rootNode = FirebaseDatabase.getInstance();
-                        reference = rootNode.getReference("users");
-                        UserHelper helper = new UserHelper(name,username,email,number,pass);
-                        reference.child(email).setValue(helper);*/
+
                         mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
-                                            // Sign in success, update UI with the signed-in user's information
                                             Log.d(TAG, "createUserWithEmail:success");
                                             FirebaseUser user = mAuth.getCurrentUser();
+                                            rootNode = FirebaseDatabase.getInstance();
+                                            reference = rootNode.getReference("users");
+                                            UserHelper helper = new UserHelper(name,username,email,number);
+                                            reference.child("users").child(user.getUid()).setValue(helper);
+
+                                            // Sign in success, update UI with the signed-in user's information
+
                                             Toast.makeText(SignUp.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                                             sendEmailVerification();
                                             updateUI(user);
@@ -107,7 +110,7 @@ public class SignUp extends AppCompatActivity {
                                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                                             Toast.makeText(SignUp.this, "Authentication failed.",
                                                     Toast.LENGTH_SHORT).show();
-                                            updateUI(null);
+                                            //updateUI(null);
                                         }
                                     }
                                 });
@@ -141,7 +144,7 @@ public class SignUp extends AppCompatActivity {
     private void reload() { }
 
     private void updateUI(FirebaseUser user) {
-        Intent toLanding = new Intent( SignUp.this, Landing_Page.class);
+        Intent toLanding = new Intent( SignUp.this, TitleViewer.class);
         startActivity(toLanding);
 
     }

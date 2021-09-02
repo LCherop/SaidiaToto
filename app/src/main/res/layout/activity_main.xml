@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/cherry"
+    android:background="@color/white"
 
 
     >
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="348dp"
-        android:layout_height="494dp"
+        android:layout_width="395dp"
+        android:layout_height="488dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="41dp"
@@ -24,7 +24,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/logo_cherry_round" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/white_logo_foreground" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

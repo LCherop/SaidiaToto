@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChokingChildActivity">
+    <include layout="@layout/toolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/ccinst_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:layout_below="@+id/toolbar"
+                android:textSize="30sp"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/ccinst_cctitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Common Causes"
+                android:layout_below="@+id/ccinst_title"
+                android:textSize="20sp"
+
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/ccurncommonCauses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_below="@+id/ccinst_cctitle"
+                android:textColor="@color/black"
+                android:text="Common causes"
+                android:paddingBottom="10dp"
+                />
+            <TextView
+                android:id="@+id/ccinst_smtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Signs and Symptoms"
+                android:layout_below="@+id/ccurncommonCauses"
+                android:textSize="20sp"
+
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/ccurnsandm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ccinst_smtitle"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:text="Signs and Symptoms"
+                android:paddingBottom="10dp"
+                />
+            <TextView
+                android:id="@+id/ccinst_stitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Common Causes"
+                android:layout_below="@+id/ccurnsandm"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/ccurnsteps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ccinst_stitle"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:text="Steps to follow:"
+                android:paddingBottom="10dp"
+                />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/ccurninstructionImage"
+                android:layout_below="@id/ccurnsteps"
+                android:src="@mipmap/cc1"
+                />
+            <TextView
+                android:id="@+id/ccinst_mititle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="More Information"
+                android:layout_below="@+id/ccurninstructionImage"
+                android:textSize="20sp"
+
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/ccmoreInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ccinst_mititle"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:text="MoreInfo"
+                android:paddingBottom="10dp"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class FeverActivity extends AppCompatActivity {
     private TextView title,cc,sandm,moreinfo,steps;
-    private ImageView animationspace;
+    //private ImageView animationspace;
 
     private InstructionAdapter adapter;
     private ArrayList<InstructionModel> instructionList;
@@ -53,7 +53,7 @@ public class FeverActivity extends AppCompatActivity {
         sandm = findViewById(R.id.furnsandm);
         moreinfo = findViewById(R.id.fmoreInfo);
         steps = findViewById(R.id.furnsteps);
-        animationspace = findViewById(R.id.furninstructionImage);
+        //animationspace = findViewById(R.id.furninstructionImage);
 
         Query query = reference.child("-MiQd0oK7VqgCGtALX1e");
         query.addValueEventListener(new ValueEventListener() {

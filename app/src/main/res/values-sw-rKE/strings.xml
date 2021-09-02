@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name ="map_key">AIzaSyCyd-5ESDKCsAnSh6m70CAr_kWu3ogviyM</string>
+
+    <string name="enter_your_email_address">Enter your email address</string>
+    <string name="app_name">SaidiaToto</string>
+    <string name="sign_up_text">Jisajili</string>
+    <string name="full_name">Jina kamili</string>
+    <string name="email">Akaunti ya Barua Pepe</string>
+    <string name="phone_number">Nambari ya simu</string>
+    <string name="password">Nenosiri</string>
+    <string name="confirm_password">Thibitisha Nenosiri</string>
+    <string name="register">Jisajili</string>
+    <string name="already_have_an_account_log_in">Tayari una akaunti? Ingia</string>
+    <string name="toRegister">Jisajili</string>
+    <string name="forget_password">Umesahau Nenosiri</string>
+    <string name="login">Ingia</string>
+    <string name="sign_up">Mtumiaji Mpya? Jisajili</string>
+    <string name="username">Akaunti ya Barua Pepe</string>
+    <string name="login_title">Ingia</string>
+    <string name="full_nameP">Jina Kamili</string>
+    <string name="email_profile">Akaunti ya Barua Pepe</string>
+    <string name="phone_number_profile">Nambari ya simu</string>
+    <string name="password_profile">Nenosiri</string>
+    <string name="verification_code">Nambari ya uthibitishaji</string>
+    <string name="description">Ujumbe umetumwa kwa</string>
+    <string name="uname">Jina la mtumiaji</string>
+    <string name="email_link_textview">Akaunti ya Barua Pepe</string>
+    <string name="email_address">Akaunti ya Barua Pepe</string>
+    <string name="send">Tuma</string>
+    <string name="forgot_password">Umesahau Nenosiri</string>
+    <string name="hospitals">Hospitali</string>
+    <string name="hospital_name">Jina la Hospitali</string>
+    <string name="app_information_coming_soon">App Information coming soon</string>
+    <string name="profile">Profaili</string>
+    <string name="info">Maelezo</string>
+    <string name="emergency">Dharura</string>
+    <string name="settings">Mipangilio</string>
+    <string name="hospital_location">Mahali pa Hospitali:</string>
+    <string name="contact">Mawasiliano</string>
+    <string name="title_activity_hospitals">Hospitali</string>
+    <string name="email_enter">Andika barua pepe yako hapa</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="browse_first_aid_manual">Vinjari Miongozo</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Ujumbe</string>
+    <string name="sync_header">Sawazisha</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Kitendo chaguomsingi cha kujibu</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sawazisha barua pepe mara kwa mara</string>
+    <string name="attachment_title">pakua viambatisho vinavyoingia</string>
+    <string name="attachment_summary_on">Pakua kiambatisho kiatomati kwa barua pepe zinazoingia
+    </string>
+    <string name="attachment_summary_off">Pakua viambatisho tu unapoombwa mwenyewe</string>
+    <string name="change_profile_photo">Badilisha Picha ya Profaili</string>
+    <string name="call_999">Piga simu 999</string>
+    <string name="change_language">badilisha lugha</string>
+    <string name="deactivate_account">Zima Akaunti</string>
+    <string name="log_out">Ondoka kwenye programu</string>
+</resources>
